@@ -1,0 +1,8 @@
+---
+# Demo playbook - install etcd cluster
+
+- name: Start up cluster
+  hosts: all
+  become: true
+  roles:
+    - etcd-kicker

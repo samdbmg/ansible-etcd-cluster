@@ -1,0 +1,30 @@
+---
+# module: etcd-kicker/install-etcd.yml
+# description: Download and install etcd binaries
+
+- name: Check if we already have etcd
+  stat:
+    path: "{{ install_dir }}/etcd"
+  register: etcd_install_dir
+
+- name: Download and extract etcd
+  block:
+    - name: Download etcd package
+      get_url:
+        url: "https://github.com/coreos/etcd/releases/download/{{etcd_version}}/etcd-{{etcd_version}}-linux-{{etcd_arch}}.tar.gz"
+        dest: /tmp/
+
+    - name: Extract etcd package
+      unarchive:
+        src: "/tmp/etcd-{{etcd_version}}-linux-{{etcd_arch}}.tar.gz"
+        dest: "/tmp/"
+        remote_src: true
+
+    - name: Make somewhere to put it
+      file:
+        path: "{{ install_dir | dirname }}"
+        state: directory
+
+    - name: Rename etcd install folder
+      command: "mv /tmp/etcd-{{etcd_version}}-linux-{{etcd_arch}} {{install_dir}}"
+  when: etcd_install_dir.stat.exists == False

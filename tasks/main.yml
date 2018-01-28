@@ -1,0 +1,5 @@
+---
+# module: etcd-kicker/main.yml
+# description: Install and configure etcd on Ubuntu
+
+- import_tasks: install-etcd.yml

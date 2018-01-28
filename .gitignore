@@ -1,0 +1,6 @@
+# Ansible temp files
+*.retry
+
+# Temporary vagrant bits
+vagrant-demo/.vagrant
+vagrant-demo/vagrant_inventory

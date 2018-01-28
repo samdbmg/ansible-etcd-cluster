@@ -1,0 +1,8 @@
+---
+# name: etcd-kicker/defaults
+# description: Default variables for etcd-kicker
+
+# Install options
+etcd_version: "v3.3.0-rc.4"  # Release version to pull from GitHub
+etcd_arch: "amd64"
+install_dir: "/opt/etcd"    # Where to extract the binaries to. Needs to omit trailing slash
