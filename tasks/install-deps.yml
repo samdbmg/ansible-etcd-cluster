@@ -1,0 +1,8 @@
+---
+# module: etcd-kicker/install-deps.yml
+# description: Install pyyaml
+
+- name: Install PyYAML
+  apt:
+    name: python-yaml
+    state: present
