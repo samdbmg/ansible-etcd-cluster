@@ -16,7 +16,7 @@ Vagrant.configure("2") do |config|
   
     (1..3).each do |i|
         config.vm.define "host-#{i}" do |node|
-            config.vm.hostname = "vagrant-etcdkicker-host-#{i}"
+            node.vm.hostname = "vagrant-etcdkicker-host-#{i}"
         end
     end
     
