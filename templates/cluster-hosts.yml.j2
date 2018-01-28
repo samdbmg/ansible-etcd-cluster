@@ -1,0 +1,8 @@
+---
+me: 
+  hostname: {{ inventory_hostname }}
+  address: "{{ hostvars[inventory_hostname]['ansible_' + etcd_client_interface]['ipv4']['address'] }}"
+hostlist:
+{% for host in groups['all'] %}
+  "{{host}}": "{{ hostvars[host]['ansible_' + etcd_client_interface]['ipv4']['address'] }}"
+{% endfor %}

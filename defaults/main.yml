@@ -6,3 +6,7 @@
 etcd_version: "v3.3.0-rc.4"  # Release version to pull from GitHub
 etcd_arch: "amd64"
 install_dir: "/opt/etcd"    # Where to extract the binaries to. Needs to omit trailing slash
+
+# Networking setup
+etcd_client_interface: "eth1"
+etcd_local_url: "{{ hostvars[inventory_hostname]['ansible_' + etcd_client_interface]['ipv4']['address'] }}"
