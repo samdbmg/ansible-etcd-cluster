@@ -1,5 +1,5 @@
 ---
-# module: etcd-kicker/install-deps.yml
+# module: ansible-etcd-cluster/install-deps.yml
 # description: Install pyyaml
 
 - name: Install PyYAML

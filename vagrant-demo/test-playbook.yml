@@ -5,4 +5,4 @@
   hosts: all
   become: true
   roles:
-    - etcd-kicker
+    - ansible-etcd-cluster

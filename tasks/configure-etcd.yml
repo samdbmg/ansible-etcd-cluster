@@ -1,5 +1,5 @@
 ---
-# module: etcd-kicker/configure-etcd.yml
+# module: ansible-etcd-cluster/configure-etcd.yml
 # description: Install host setup files
 
 - name: Make a folder for etcd data

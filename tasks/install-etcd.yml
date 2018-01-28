@@ -1,5 +1,5 @@
 ---
-# module: etcd-kicker/install-etcd.yml
+# module: ansible-etcd-cluster/install-etcd.yml
 # description: Download and install etcd binaries
 
 - name: Check if we already have etcd

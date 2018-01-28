@@ -1,6 +1,6 @@
 ---
-# name: etcd-kicker/defaults
-# description: Default variables for etcd-kicker
+# name: ansible-etcd-cluster/defaults
+# description: Default variables for ansible-etcd-cluster
 
 # Install options
 etcd_version: "v3.3.0-rc.4"  # Release version to pull from GitHub

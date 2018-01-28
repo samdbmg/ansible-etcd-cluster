@@ -1,5 +1,5 @@
 ---
-# module: etcd-kicker/main.yml
+# module: ansible-etcd-cluster/main.yml
 # description: Install and configure etcd on Ubuntu
 
 - import_tasks: install-deps.yml
