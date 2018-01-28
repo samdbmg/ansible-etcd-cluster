@@ -4,3 +4,4 @@
 
 - import_tasks: install-deps.yml
 - import_tasks: install-etcd.yml
+- import_tasks: configure-etcd.yml

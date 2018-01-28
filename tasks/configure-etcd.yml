@@ -1,0 +1,32 @@
+---
+# module: etcd-kicker/configure-etcd.yml
+# description: Install host setup files
+
+- name: Make a folder for etcd data
+  file:
+    path: /var/lib/etcd
+    state: directory
+
+- name: Generate hostlist file
+  template:
+    src: "templates/cluster-hosts.yml.j2"
+    dest: "{{ install_dir }}/cluster-hosts.yml"
+
+
+- name: Copy startup script
+  template:
+    src: "templates/etcd-launch.py"
+    dest: "{{ install_dir }}/etcd-launch.py"
+    mode: u=rwx,g=rx,o=gx
+
+
+- name: Copy systemd unit file
+  template:
+    src: "templates/etcd.service"
+    dest: "/etc/systemd/system/etcd.service"
+
+- name: Start service
+  systemd:
+    name: etcd
+    state: started
+    daemon-reload: true
