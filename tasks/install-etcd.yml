@@ -21,10 +21,12 @@
         remote_src: true
 
     - name: Make somewhere to put it
+      become: true
       file:
         path: "{{ install_dir | dirname }}"
         state: directory
 
     - name: Rename etcd install folder
+      become: true
       command: "mv /tmp/etcd-{{etcd_version}}-linux-{{etcd_arch}} {{install_dir}}"
   when: etcd_install_dir.stat.exists == False

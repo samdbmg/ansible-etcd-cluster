@@ -3,17 +3,20 @@
 # description: Install host setup files
 
 - name: Make a folder for etcd data
+  become: true
   file:
     path: /var/lib/etcd
     state: directory
 
 - name: Generate hostlist file
+  become: true
   template:
     src: "templates/cluster-hosts.yml.j2"
     dest: "{{ install_dir }}/cluster-hosts.yml"
 
 
 - name: Copy startup script
+  become: true
   template:
     src: "templates/etcd-launch.py"
     dest: "{{ install_dir }}/etcd-launch.py"
@@ -21,11 +24,13 @@
 
 
 - name: Copy systemd unit file
+  become: true
   template:
     src: "templates/etcd.service"
     dest: "/etc/systemd/system/etcd.service"
 
 - name: Start service
+  become: true
   systemd:
     name: etcd
     state: started

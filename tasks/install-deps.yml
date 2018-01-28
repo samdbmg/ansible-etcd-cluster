@@ -3,6 +3,7 @@
 # description: Install pyyaml
 
 - name: Install PyYAML
+  become: true
   apt:
     name: python-yaml
     state: present
