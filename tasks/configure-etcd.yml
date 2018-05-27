@@ -7,13 +7,14 @@
   file:
     path: /var/lib/etcd
     state: directory
+  notify: Restart etcd
 
 - name: Generate hostlist file
   become: true
   template:
     src: "templates/cluster-hosts.yml.j2"
     dest: "{{ install_dir }}/cluster-hosts.yml"
-
+  notify: Restart etcd
 
 - name: Copy startup script
   become: true
@@ -21,17 +22,19 @@
     src: "templates/etcd-launch.py"
     dest: "{{ install_dir }}/etcd-launch.py"
     mode: u=rwx,g=rx,o=gx
-
+  notify: Restart etcd
 
 - name: Copy systemd unit file
   become: true
   template:
     src: "templates/etcd.service"
     dest: "/etc/systemd/system/etcd.service"
+  notify: Restart etcd
 
-- name: Start service
-  become: true
+- name: Make sure systemd is reloaded
+  meta: flush_handlers
+
+- name: Enable etcd service on boot
   systemd:
     name: etcd
-    state: started
-    daemon-reload: true
+    enabled: "{{ etcd_start_on_boot }}"
